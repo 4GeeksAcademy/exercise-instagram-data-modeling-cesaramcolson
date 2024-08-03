@@ -43,7 +43,6 @@ class Description(Base):
 class Likes(Base):
     __tablename__ = 'likes'
     id = Column(Integer, primary_key=True)
-    like_number = Column(Integer, nullable=False)
     author_id = Column(Integer, ForeignKey("user.id"))
     post_id = Column(Integer, ForeignKey("post.id"))
 
@@ -52,8 +51,6 @@ class Follower(Base):
     id = Column(Integer, primary_key=True)
     user_from_id = Column(Integer, ForeignKey("user.id"))
     user_to_id = Column(Integer, ForeignKey("user.id"))
-    user_from_username = Column(String(100), ForeignKey("user.username"))
-    user_to_username = Column(String(100), ForeignKey("user.username"))
 
     def to_dict(self):
         return {}
